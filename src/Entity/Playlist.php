@@ -100,7 +100,7 @@ class Playlist
 
 	/**
 	 * @return Collection<int, string>
-	 */	
+	 */
 	public function getCategoriesPlaylist() : Collection
 	{
 		$categories = new ArrayCollection();
