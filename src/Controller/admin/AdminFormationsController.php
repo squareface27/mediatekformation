@@ -1,7 +1,6 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\admin;
 
-use App\Entity\Formation;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Controleur des formations
  *
- * @author emds
+ * @author Squareface
  */
-class FormationsController extends AbstractController {
+class AdminFormationsController extends AbstractController {
 
-    const FORMATIONS_PAGE = "pages/formations.html.twig";
+    const FORMATIONS_PAGE = "admin/admin.formations.html.twig";
 
     /**
      * @var FormationRepository
@@ -34,7 +33,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
-     * @Route("/formations", name="formations")
+     * @Route("admin/formations", name="admin.formations")
      * @return Response
      */
     public function index(): Response{
@@ -47,7 +46,7 @@ class FormationsController extends AbstractController {
     }
 
     /**
-     * @Route("/formations/tri/{champ}/{ordre}/{table}", name="formations.sort")
+     * @Route("admin/formations/tri/{champ}/{ordre}/{table}", name="admin.formations.sort")
      * @param type $champ
      * @param type $ordre
      * @param type $table
@@ -63,7 +62,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
-     * @Route("/formations/recherche/{champ}/{table}", name="formations.findallcontain")
+     * @Route("admin/formations/recherche/{champ}/{table}", name="admin.formations.findallcontain")
      * @param type $champ
      * @param Request $request
      * @param type $table
@@ -82,7 +81,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
-     * @Route("/formations/formation/{id}", name="formations.showone")
+     * @Route("admin/formations/formation/{id}", name="admin.formations.showone")
      * @param type $id
      * @return Response
      */
@@ -93,13 +92,4 @@ class FormationsController extends AbstractController {
         ]);
     }
     
-    /**
-     * @Route("/admin/suppr/{id}", name="admin.formations.suppr")
-     * @param Formation $formation
-     * @return Response
-     */
-    public function suppr(Formation $formation): Response {
-        $this->formationRepository->remove($formation, true);
-        return $this->redirectToRoute('admin.formations');
-    }
 }
