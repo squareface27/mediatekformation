@@ -72,7 +72,7 @@ class AdminFormationsController extends AbstractController {
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/formations.html.twig", [
+        return $this->render(self::FORMATIONS_PAGE, [
             'formations' => $formations,
             'categories' => $categories,
             'valeur' => $valeur,
@@ -87,7 +87,7 @@ class AdminFormationsController extends AbstractController {
      */
     public function showOne($id): Response{
         $formation = $this->formationRepository->find($id);
-        return $this->render("pages/formation.html.twig", [
+        return $this->render(self::FORMATIONS_PAGE, [
             'formation' => $formation
         ]);
     }
