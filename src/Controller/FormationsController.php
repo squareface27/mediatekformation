@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Formation;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -93,13 +92,4 @@ class FormationsController extends AbstractController {
         ]);
     }
     
-    /**
-     * @Route("/admin/suppr/{id}", name="admin.formations.suppr")
-     * @param Formation $formation
-     * @return Response
-     */
-    public function suppr(Formation $formation): Response {
-        $this->formationRepository->remove($formation, true);
-        return $this->redirectToRoute('admin.formations');
-    }
 }

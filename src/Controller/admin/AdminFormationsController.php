@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller\admin;
 
+use App\Entity\Formation;
+use App\Form\FormationType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminFormationsController extends AbstractController {
 
     const FORMATIONS_PAGE = "admin/admin.formations.html.twig";
+    const FORMATIONS_EDIT_PAGE = "admin/admin.formations.edit.html.twig";
 
     /**
      * @var FormationRepository
@@ -89,6 +92,36 @@ class AdminFormationsController extends AbstractController {
         $formation = $this->formationRepository->find($id);
         return $this->render(self::FORMATIONS_PAGE, [
             'formation' => $formation
+        ]);
+    }
+
+    /**
+     * @Route("/admin/suppr/{id}", name="admin.formations.suppr")
+     * @param Formation $formation
+     * @return Response
+     */
+    public function suppr(Formation $formation): Response {
+        $this->formationRepository->remove($formation, true);
+        return $this->redirectToRoute('admin.formations');
+    }
+
+    /**
+     * @Route("/admin/edit/{id}", name="admin.formations.edit")
+     * @param Formation $formation
+     * @param Request $request
+     * @return Response
+     */
+    public function edit(Formation $formation, Request $request): Response {
+        $formFormation = $this->createForm(FormationType::class, $formation);
+        $formFormation->handleRequest($request);
+        if($formFormation->isSubmitted() && $formFormation->isValid()) {
+            $this->formationRepository->add($formation, true);
+            return $this->redirectToRoute('admin.formations');
+        }
+
+        return $this->render(self::FORMATIONS_EDIT_PAGE, [
+            'formation' => $formation,
+            'formformation' => $formFormation->createView()
         ]);
     }
     
