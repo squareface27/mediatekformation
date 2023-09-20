@@ -19,6 +19,7 @@ class AdminFormationsController extends AbstractController {
 
     const FORMATIONS_PAGE = "admin/admin.formations.html.twig";
     const FORMATIONS_EDIT_PAGE = "admin/admin.formations.edit.html.twig";
+    const FORMATIONS_ADD_PAGE = "admin/admin.formations.add.html.twig";
 
     /**
      * @var FormationRepository
@@ -120,6 +121,28 @@ class AdminFormationsController extends AbstractController {
         }
 
         return $this->render(self::FORMATIONS_EDIT_PAGE, [
+            'formation' => $formation,
+            'formformation' => $formFormation->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/add/", name="admin.formations.add")
+     * @param Formation $formation
+     * @param Request $request
+     * @return Response
+     */
+    public function add(Request $request): Response {
+        $formation = new Formation();
+        $formFormation = $this->createForm(FormationType::class, $formation);
+        $formFormation->handleRequest($request);
+        if($formFormation->isSubmitted() && $formFormation->isValid()) {
+            $this->formationRepository->add($formation, true);
+            return $this->redirectToRoute('admin.formations');
+        }
+
+        return $this->render(self::FORMATIONS_ADD_PAGE, [
             'formation' => $formation,
             'formformation' => $formFormation->createView()
         ]);
