@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller\admin;
+namespace App\Controller\admin\formations;
 
 use App\Entity\Formation;
 use App\Form\FormationType;
@@ -17,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminFormationsController extends AbstractController {
 
-    const FORMATIONS_PAGE = "admin/admin.formations.html.twig";
-    const FORMATIONS_EDIT_PAGE = "admin/admin.formations.edit.html.twig";
-    const FORMATIONS_ADD_PAGE = "admin/admin.formations.add.html.twig";
+    const FORMATIONS_PAGE = "admin/formations/admin.formations.html.twig";
+    const FORMATIONS_EDIT_PAGE = "admin/formations/admin.formations.edit.html.twig";
+    const FORMATIONS_ADD_PAGE = "admin/formations/admin.formations.add.html.twig";
 
     /**
      * @var FormationRepository
@@ -97,7 +97,7 @@ class AdminFormationsController extends AbstractController {
     }
 
     /**
-     * @Route("/admin/suppr/{id}", name="admin.formations.suppr")
+     * @Route("/admin/formations/suppr/{id}", name="admin.formations.suppr")
      * @param Formation $formation
      * @return Response
      */
