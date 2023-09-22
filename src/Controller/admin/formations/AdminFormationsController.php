@@ -107,7 +107,7 @@ class AdminFormationsController extends AbstractController {
     }
 
     /**
-     * @Route("/admin/edit/{id}", name="admin.formations.edit")
+     * @Route("/admin/formations/edit/{id}", name="admin.formations.edit")
      * @param Formation $formation
      * @param Request $request
      * @return Response
@@ -128,7 +128,7 @@ class AdminFormationsController extends AbstractController {
 
 
     /**
-     * @Route("/admin/add/", name="admin.formations.add")
+     * @Route("/admin/Formations/add/", name="admin.formations.add")
      * @param Formation $formation
      * @param Request $request
      * @return Response
