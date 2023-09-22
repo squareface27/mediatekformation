@@ -6,6 +6,12 @@
             {{ errorMessages[0] }}
         </div>
     {% endif %}
+    <form class="form-inline mt-1" method="POST" action="{{ path('admin.categories.add') }}">
+        <div class="form-group mr-1 mb-2">
+            <input type="text" class="sm" name="name">
+            <button type="submit" class="btn btn-primary mb-2 btn-sm">Ajouter</button>
+        </div>
+    </form>
     <table class="table table-striped">
         <caption></caption>
         <thead>

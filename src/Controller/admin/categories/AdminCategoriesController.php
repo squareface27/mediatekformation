@@ -8,6 +8,8 @@ use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class AdminCategoriesController extends AbstractController
 {
@@ -73,4 +75,23 @@ class AdminCategoriesController extends AbstractController
         return $this->redirectToRoute('admin.categories');
     }
 
+    /**
+     * @Route("/admin/categories/add", name="admin.categories.add")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajout(Request $request): Response{
+        $nomCategorie = $request->get("name");
+        $categorieCheck = $this->categorieRepository->findOneBy(['name' => $nomCategorie]);
+
+        if ($categorieCheck) {
+            $this->addFlash('error', 'Une catégorie avec ce nom existe déjà.');
+            return $this->redirectToRoute('admin.categories');
+        }
+
+        $categorie = new Categorie();
+        $categorie->setName($nomCategorie);
+        $this->categorieRepository->add($categorie, true);
+        return $this->redirectToRoute('admin.categories');
+    }
 }
