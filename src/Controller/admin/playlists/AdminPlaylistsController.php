@@ -2,6 +2,7 @@
 namespace App\Controller\admin\playlists;
 
 use App\Entity\Playlist;
+use App\Form\PlaylistsType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use App\Repository\PlaylistRepository;
@@ -14,6 +15,7 @@ class AdminPlaylistsController extends AbstractController {
 
     const PAGE_PLAYLISTS = "admin/playlists/admin.playlists.html.twig";
     const PAGE_PLAYLIST = "pages/playlist.html.twig";
+    const PLAYLISTS_EDIT_PAGE = "admin/playlists/admin.playlists.edit.html.twig";
     
     /**
      * @var PlaylistRepository
@@ -122,5 +124,24 @@ class AdminPlaylistsController extends AbstractController {
         }
         return $this->redirectToRoute('admin.playlists');
     }
+
+        /**
+        * @Route("/admin/playlists/edit/{id}", name="admin.playlists.edit")
+        * @param Playlist $playlist
+        * @param Request $request
+        * @return Response
+        */
+        public function edit(Playlist $playlist, Request $request): Response{
+            $formPlaylists = $this->createForm(PlaylistsType::class, $playlist);
+            $formPlaylists->handleRequest($request);
+            if($formPlaylists->isSubmitted() && $formPlaylists->isValid()) {
+                $this->playlistRepository->add($playlist, true);
+                return $this->redirectToRoute('admin.playlists');
+            }
+            return $this->render(self::PLAYLISTS_EDIT_PAGE, [
+                'playlist' => $playlist,
+                'formplaylists' => $formPlaylists->createView()
+            ]);
+        }
     
 }

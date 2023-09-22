@@ -78,10 +78,10 @@
                             <a href="{{ path('admin.playlists.showone', {id:playlists[k].id}) }}" class="btn btn-secondary">Voir détail</a>
                         </td>
                         <td>
-                        <a href="" class="btn btn-secondary">Éditer</a>
+                        <a href="{{ path('admin.playlists.edit', {id:playlists[k].id}) }}" class="btn btn-secondary">Éditer</a>
                     </td>
                     <td>
-                        <a href=" {{ path('admin.playlists.suppr', {id:playlists[k].id}) }}" class="btn btn-danger" 
+                        <a href="{{ path('admin.playlists.suppr', {id:playlists[k].id}) }}" class="btn btn-danger" 
                         onclick="return confirm('Etes-vous sûr de vouloir supprimer  {{ playlists[k].name }} ?')">Supprimer</a>
                     </td>				
                     </tr>
