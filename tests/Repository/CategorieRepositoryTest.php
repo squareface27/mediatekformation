@@ -41,7 +41,7 @@ class CategorieRepositoryTest extends KernelTestCase
         $repository->add($categorie, true);
         $nbCategories = $repository->count([]);
         $repository->remove($categorie, true);
-        $this->assertEquals($nbCategories - 1, $repository->count([]), "Erreur lors de l'ajout de la catégorie");
+        $this->assertEquals($nbCategories - 1, $repository->count([]), "Erreur lors de la suppression de la catégorie");
     }
 
     public function testfindAllForOnePlaylist() {
