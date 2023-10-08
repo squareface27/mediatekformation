@@ -65,7 +65,7 @@
                         </h5>
                     </td>
                     <td class="text-left">
-                        {{ formation.playlist.name }}                  
+                        {{ formation.playlist }}                  
                     </td>                    
                     <td class="text-left">
                         {% for categorie in formation.categories %}
@@ -79,7 +79,7 @@
                         {% if formation.miniature %}
                             <a href="{{ path('formations.showone', {id:formation.id}) }}">
                                 <img src="{{ formation.miniature }}"
-                                     alt="">
+                                     alt="image">
                             </a>
                         {% endif %}
                     </td>
