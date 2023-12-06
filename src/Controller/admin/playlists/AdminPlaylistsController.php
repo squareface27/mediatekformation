@@ -11,6 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Controleur de admin playlists
+ *
+ * @author squareface
+ */
+
 class AdminPlaylistsController extends AbstractController {
 
     const PAGE_PLAYLISTS = "admin/playlists/admin.playlists.html.twig";

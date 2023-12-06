@@ -19,7 +19,7 @@ class FormationRepositoryTest extends KernelTestCase
     public function testNbFormations() {
         $repository = $this->recupRepository();
         $nbFormations = $repository->count([]);
-        $this->assertEquals(233, $nbFormations);
+        $this->assertEquals(245, $nbFormations);
     }
 
     public function newFormation(): Formation {

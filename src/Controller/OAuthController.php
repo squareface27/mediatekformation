@@ -8,6 +8,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Controleur de l'authentification
+ *
+ * @author squareface
+ */
+
 class OAuthController extends AbstractController
 {
     /**

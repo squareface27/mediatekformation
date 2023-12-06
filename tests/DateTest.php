@@ -15,7 +15,7 @@ class dateTest extends TestCase {
         $this->assertEquals("25/09/2023", $formation->getPublishedAtString());
     }
 
-    // Cette méthode ne fonctionne pas car 2023-09-27 !== 25/09/2023
+    // Cette méthode ne fonctionne pas car 2023-09-27 est différent de 25/09/2023
 
     public function testNonValidGetPublishedAt() {
         $formation = new Formation();

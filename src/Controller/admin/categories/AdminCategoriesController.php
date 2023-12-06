@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Controleur de admin categories
+ *
+ * @author squareface
+ */
 
 class AdminCategoriesController extends AbstractController
 {

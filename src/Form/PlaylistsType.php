@@ -23,7 +23,7 @@ class PlaylistsType extends AbstractType
             ->add('description', null, [
                 'label' => 'Description',
                 'required' => false,
-                'attr' => ['rows' => 20]
+                'attr' => ['rows' => 15]
             ])
             ->add('formations', EntityType::class, [
                 'class' => Formation::class,
@@ -31,7 +31,8 @@ class PlaylistsType extends AbstractType
                 'choice_label' => 'title',
                 'multiple' => true,
                 'required' => false,
-                'disabled' => true
+                'disabled' => true,
+                'attr' => ['rows' => 5]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',

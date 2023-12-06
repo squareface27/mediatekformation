@@ -6,6 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Controleur de l'accueil back office
+ *
+ * @author squareface
+ */
+
 class AdminController extends AbstractController
 {
     /**
