@@ -11,7 +11,7 @@ class FormationsControllerTest extends WebTestCase
     private const FORMATIONS = '/formations';
 
     // Test d'accès à la page
-    public function testAccessPage() {
+    public function testAccessPageFormations() {
         $client = static::createClient();
         $client->request('GET', self::FORMATIONS);
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);

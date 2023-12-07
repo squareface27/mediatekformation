@@ -10,7 +10,7 @@ class PlaylistsControllerTest extends WebTestCase
     private const PLAYLISTS = '/playlists';
 
     // Test d'accès à la page
-    public function testAccessPage() {
+    public function testAccessPagePlaylists() {
         $client = static::createClient();
         $client->request('GET', self::PLAYLISTS);
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);

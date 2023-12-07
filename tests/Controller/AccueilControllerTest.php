@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AccueilControllerTest extends WebTestCase
 {
-    public function testAccessPage() {
+    public function testAccessPageHome() {
         $client = static::createClient();
         $client->request('GET', '/');
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
