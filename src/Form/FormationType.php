@@ -48,7 +48,7 @@ class FormationType extends AbstractType
                   'choice_label' => 'name',
                   'multiple' => true,
                   'label' => 'Catégorie',
-                  'required' => true
+                  'required' => false
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
